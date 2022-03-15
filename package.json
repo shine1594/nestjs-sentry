@@ -7,7 +7,7 @@
     }
   ],
   "name": "@dohyeong2/nestjs-sentry",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "description": "Provides an injectable sentry.io client to provide enterprise logging nestjs modules",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -69,6 +69,7 @@
   },
   "optionalDependencies": {
     "@nestjs/graphql": "^8.0.2 || ^9.0.4",
+    "apollo-server-core": "^3",
     "graphql": "^15"
   },
   "files": [
