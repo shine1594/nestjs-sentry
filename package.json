@@ -6,8 +6,8 @@
       "url": "http://www.ntegral.com"
     }
   ],
-  "name": "@ntegral/nestjs-sentry",
-  "version": "3.0.7",
+  "name": "@dohyeong2/nestjs-sentry",
+  "version": "3.0.8",
   "description": "Provides an injectable sentry.io client to provide enterprise logging nestjs modules",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -68,6 +68,10 @@
     "typescript": "^4.5.4"
   },
   "optionalDependencies": {
-    "@nestjs/graphql": "^8.0.2 || ^9.0.4"
-  }
+    "@nestjs/graphql": "^8.0.2 || ^9.0.4",
+    "graphql": "^15"
+  },
+  "files": [
+    "dist/"
+  ]
 }
