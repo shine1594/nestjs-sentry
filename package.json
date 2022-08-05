@@ -7,7 +7,7 @@
     }
   ],
   "name": "@dohyeong2/nestjs-sentry",
-  "version": "3.1.1",
+  "version": "4.0.0",
   "description": "Provides an injectable sentry.io client to provide enterprise logging nestjs modules",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
