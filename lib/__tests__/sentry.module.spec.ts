@@ -1,10 +1,9 @@
 import { Test } from '@nestjs/testing';
-
+import { Module } from '@nestjs/common';
 import { SentryModule  } from '../sentry.module';
 import { SentryModuleOptions, SentryOptionsFactory } from '../sentry.interfaces';
 import { SentryService } from '../sentry.service';
 import { SENTRY_TOKEN } from '../sentry.constants';
-import { Module } from '@nestjs/common';
 
 describe('SentryModule', () => {
     let config: SentryModuleOptions = {

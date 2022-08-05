@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { SentryModuleOptions } from '../sentry.interfaces';
 import { Injectable } from '@nestjs/common';
+import { SentryModuleOptions } from '../sentry.interfaces';
 import { InjectSentry } from '../sentry.decorator';
 import { SentryModule } from '../sentry.module';
 import { SentryService } from '../sentry.service';
