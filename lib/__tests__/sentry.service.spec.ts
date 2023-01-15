@@ -1,9 +1,9 @@
-import {Test, TestingModule} from "@nestjs/testing";
+import { Test, TestingModule } from "@nestjs/testing";
 import * as Sentry from '@sentry/node';
-import {SentryModuleOptions, SentryOptionsFactory} from "../sentry.interfaces";
-import {SentryModule} from "../sentry.module";
-import {SentryService} from "../sentry.service";
-import {SENTRY_TOKEN} from "../sentry.constants";
+import { SentryModuleOptions, SentryOptionsFactory } from "../sentry.interfaces";
+import { SentryModule } from "../sentry.module";
+import { SentryService } from "../sentry.service";
+import { SENTRY_TOKEN } from "../sentry.constants";
 
 
 jest.spyOn(Sentry, 'close')
@@ -11,7 +11,6 @@ jest.spyOn(Sentry, 'close')
 const mockCloseSentry = Sentry.close as jest.MockedFunction<typeof Sentry.close>;
 
 const SENTRY_NOT_CONFIGURE_ERROR = 'Please confirm that Sentry is configured correctly';
-
 
 describe('SentryService', () => {
     let config: SentryModuleOptions = {

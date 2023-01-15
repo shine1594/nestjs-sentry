@@ -2,6 +2,7 @@
 import {
   CallHandler,
   ExecutionContext,
+  HttpException,
   Injectable,
   NestInterceptor
 } from '@nestjs/common';
@@ -33,17 +34,17 @@ export class SentryInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     // first param would be for events, second is for errors
     return next.handle().pipe(
-      tap(null, (exception) => {
+      tap(null, (exception : HttpException) => {
         if(this.shouldReport(exception)) {
           this.client.instance().withScope((scope) => {
-            this.captureException(context, scope, exception);
+            return this.captureException(context, scope, exception);
           })
         }
       })
     );
   }
 
-  protected captureException(context: ExecutionContext, scope: Scope, exception: any) {
+  protected captureException(context: ExecutionContext, scope: Scope, exception: HttpException) {
     switch (context.getType<ContextType>()) {
       case 'http':
         return this.captureHttpException(
@@ -66,7 +67,7 @@ export class SentryInterceptor implements NestInterceptor {
     }
   }
 
-  private captureHttpException(scope: Scope, http: HttpArgumentsHost, exception: any): void {
+  private captureHttpException(scope: Scope, http: HttpArgumentsHost, exception: HttpException): void {
     const data = Handlers.parseRequest(<any>{},http.getRequest(), this.options);
 
     scope.setExtra('req', data.request);
@@ -101,12 +102,12 @@ export class SentryInterceptor implements NestInterceptor {
   private shouldReport(exception: any) {
     if (this.options && !this.options.filters) return true;
 
-    // If all filters pass, then we do not report
+    // If any filter passes, then we do not report
     if (this.options) {
       const opts: SentryInterceptorOptions = this.options as {}
       if (opts.filters) {
         let filters: SentryInterceptorOptionsFilter[] = opts.filters
-        return filters.every(({ type, filter }) => {
+        return filters.some(({ type, filter }) => {
           return !(exception instanceof type && (!filter || filter(exception)));
         });
       }
