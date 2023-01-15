@@ -37,7 +37,6 @@
     "@sentry/hub": "^7",
     "@sentry/node": "^7",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3",
     "rxjs": "^7"
   },
   "jest": {
@@ -49,7 +48,9 @@
     "rootDir": "lib",
     "testRegex": ".spec.ts$",
     "transform": {
-      "^.+\\.(t|j)s$": ["@swc/jest"]
+      "^.+\\.(t|j)s$": [
+        "@swc/jest"
+      ]
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
