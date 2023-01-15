@@ -1,7 +1,7 @@
-import { ModuleMetadata, Type } from "@nestjs/common/interfaces";
-import { Integration, Options } from '@sentry/types';
-import { ConsoleLoggerOptions } from "@nestjs/common";
-import { SeverityLevel } from "@sentry/node";
+import {ModuleMetadata, Type} from "@nestjs/common/interfaces";
+import {Options} from '@sentry/types';
+import {ConsoleLoggerOptions} from "@nestjs/common";
+import {SeverityLevel} from "@sentry/node";
 
 export interface SentryCloseOptions {
     enabled: boolean;
@@ -9,8 +9,7 @@ export interface SentryCloseOptions {
     timeout?: number;
 }
 
-export type SentryModuleOptions = Omit<Options, 'integrations'> & {
-    integrations?: Integration[];
+export type SentryModuleOptions = Options & {
     close?: SentryCloseOptions
 } & ConsoleLoggerOptions;
 
